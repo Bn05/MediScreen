@@ -1,3 +1,7 @@
+CREATE DATABASE mediscreendb;
+
+USE mediscreendb;
+
 CREATE TABLE patients
 (
 
@@ -11,3 +15,4 @@ CREATE TABLE patients
 
     PRIMARY KEY (id)
 );
+

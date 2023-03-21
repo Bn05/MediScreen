@@ -4,7 +4,6 @@ services:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: "rootroot"
-      MYSQL_DATABASE: "mediscreendb"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "user"
     restart: always
