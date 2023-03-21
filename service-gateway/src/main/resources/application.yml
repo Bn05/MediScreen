@@ -1,0 +1,22 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: microservice-patient
+          uri: lb://microservice-patient
+          predicates:
+            - Path=/mediscreen/api/**
+          filters:
+            - StripPrefix=2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:9102/eureka/
+  instance:
+    preferIpAddress: true

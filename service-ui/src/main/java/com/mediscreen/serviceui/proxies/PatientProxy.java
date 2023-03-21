@@ -1,12 +1,13 @@
 package com.mediscreen.serviceui.proxies;
 
 import com.mediscreen.serviceui.bean.PatientBean;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "microservice-patient", url = "localhost:8080")
+@FeignClient(name = "service-gateway", url = "${URL_GATEWAY}")
 public interface PatientProxy {
 
     //CREATE

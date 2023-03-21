@@ -1,9 +1,20 @@
 version: '3'
 services:
+
   service-eureka:
     image: service-eureka
+    restart: always
     ports:
       - "9102:9102"
+
+  service-gateway:
+    image: service-gateway
+    environment:
+      - JAVA_TOOL_OPTIONS=
+        -DEUREKA_HOST=service-eureka
+    restart: always
+    ports:
+      - "8888:8888"
 
   mysqldb:
     image: mysql:latest
@@ -12,15 +23,12 @@ services:
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "user"
     restart: always
-
     ports:
       - "3306:3306"
 
     volumes:
       - ./init:/docker-entrypoint-initdb.d/:rw
       - mysqldb:/var/lib/mysql:rw
-
-
 
 
   microservice-patient:
@@ -33,6 +41,15 @@ services:
       - "8080:8080"
     depends_on:
       - mysqldb
+
+  service-ui:
+    image: service-ui
+    environment:
+      - JAVA_TOOL_OPTIONS=      
+        -DGATEWAY_HOST=service-gateway
+    ports:
+      - "8081:8081"
+
 
 
 volumes:
