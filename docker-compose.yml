@@ -1,0 +1,34 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootroot"
+      MYSQL_DATABASE: "mediscreendb"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "user"
+    restart: always
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/:rw
+      - mysqldb:/var/lib/mysql:rw
+
+
+
+
+  microservice-patient:
+    image: microservice-patient
+    environment:
+      - JAVA_TOOL_OPTIONS=
+        -DMYSQL_HOST=mysqldb
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+
+
+volumes:
+  mysqldb:

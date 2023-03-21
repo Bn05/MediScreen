@@ -2,6 +2,7 @@ package com.mediscreen.microservicepatient.controller;
 
 import com.mediscreen.microservicepatient.model.Patient;
 import com.mediscreen.microservicepatient.service.IPatientService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public Patient addPatient(@RequestBody Patient patient) {
+    public Patient addPatient(@RequestBody @Valid Patient patient) {
 
         return patientService.addPatient(patient);
     }

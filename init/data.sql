@@ -1,11 +1,3 @@
-DROP
-DATABASE IF EXISTS mediscreen;
-
-CREATE
-DATABASE mediscreen;
-
-use mediscreen;
-
 CREATE TABLE patients
 (
 
