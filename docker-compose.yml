@@ -1,5 +1,10 @@
 version: '3'
 services:
+  service-eureka:
+    image: service-eureka
+    ports:
+      - "9102:9102"
+
   mysqldb:
     image: mysql:latest
     environment:
@@ -23,6 +28,7 @@ services:
     environment:
       - JAVA_TOOL_OPTIONS=
         -DMYSQL_HOST=mysqldb
+        -DEUREKA_HOST=service-eureka
     ports:
       - "8080:8080"
     depends_on:

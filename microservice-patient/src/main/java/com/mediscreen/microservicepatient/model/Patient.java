@@ -26,7 +26,6 @@ public class Patient {
     @NotNull(message = "Merci d'indiquer votre date de naissance")
     private LocalDate birthdate;
     @NotBlank
-    @OneToMany(mappedBy="cart")
     private String gender;
     private String address;
     private String phoneNumber;
