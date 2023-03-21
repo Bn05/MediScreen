@@ -2,8 +2,6 @@ package com.mediscreen.microservicepatient.controller;
 
 import com.mediscreen.microservicepatient.model.Patient;
 import com.mediscreen.microservicepatient.service.IPatientService;
-import jakarta.ws.rs.DELETE;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

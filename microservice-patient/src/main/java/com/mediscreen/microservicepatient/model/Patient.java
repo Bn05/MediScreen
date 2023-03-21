@@ -1,9 +1,15 @@
 package com.mediscreen.microservicepatient.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "patients")
 public class Patient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String lastName;
     private String firstName;
