@@ -4,8 +4,8 @@ services:
   service-eureka:
     image: service-eureka
     restart: always
-    ports:
-      - "9102:9102"
+   # ports:
+    #   - "9102:9102"
 
   service-gateway:
     image: service-gateway
@@ -21,8 +21,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "rootroot" #must be change in prod
     restart: always
-    ports:
-      - "3306:3306"
+      #ports:
+    #- "3306:3306"
 
     volumes:
       - ./init:/docker-entrypoint-initdb.d/:rw
@@ -37,18 +37,18 @@ services:
         -DMYSQL_USER="root"
         -DMYSQL_PASSWORD="rootroot"
         -DEUREKA_HOST="service-eureka"
-    ports:
-      - "8080:8080"
+      # ports:
+      # - "8080:8080"
     depends_on:
       - mysqldb
 
   service-ui:
     image: service-ui
     environment:
-      - JAVA_TOOL_OPTIONS=
-        -DGATEWAY_HOST=service-gateway
-    ports:
-      - "8081:8081"
+      - JAVA_TOOL_OPTIONS=        
+        -DEUREKA_HOST="service-eureka"
+      # ports:
+    #  - "8081:8081"
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients("com.mediscreen")
+@EnableDiscoveryClient
 public class ServiceUiApplication {
 
 	public static void main(String[] args) {
