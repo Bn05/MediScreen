@@ -3,6 +3,7 @@ package com.mediscreen.microservicepatient.service;
 import com.mediscreen.microservicepatient.exception.NotFoundException;
 import com.mediscreen.microservicepatient.model.Patient;
 import com.mediscreen.microservicepatient.repository.PatientRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PatientServiceImpl implements IPatientService {
 
     private final PatientRepository patientRepository;
