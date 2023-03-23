@@ -4,30 +4,35 @@ services:
   service-eureka:
     image: service-eureka
     restart: always
-   # ports:
+    # ports:
     #   - "9102:9102"
-
-  service-gateway:
-    image: service-gateway
-    environment:
-      - JAVA_TOOL_OPTIONS=
-        -DEUREKA_HOST=service-eureka
-    restart: always
-    ports:
-      - "8888:8888"
 
   mysqldb:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: "rootroot" #must be change in prod
     restart: always
-      #ports:
+    #ports:
     #- "3306:3306"
 
     volumes:
       - ./init:/docker-entrypoint-initdb.d/:rw
       - mysqldb:/var/lib/mysql:rw
 
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+
+  service-gateway:
+    image: service-gateway
+    environment:
+      - JAVA_TOOL_OPTIONS=
+        -DEUREKA_HOST=service-eureka
+        -DZIPKIN_HOST="zipkin"
+    restart: always
+    ports:
+      - "8888:8888"
 
   microservice-patient:
     image: microservice-patient
@@ -37,6 +42,7 @@ services:
         -DMYSQL_USER="root"
         -DMYSQL_PASSWORD="rootroot"
         -DEUREKA_HOST="service-eureka"
+        -DZIPKIN_HOST="zipkin"
       # ports:
       # - "8080:8080"
     depends_on:
@@ -45,10 +51,12 @@ services:
   service-ui:
     image: service-ui
     environment:
-      - JAVA_TOOL_OPTIONS=        
+      - JAVA_TOOL_OPTIONS=
         -DEUREKA_HOST="service-eureka"
+        -DZIPKIN_HOST="zipkin"
       # ports:
     #  - "8081:8081"
+
 
 
 

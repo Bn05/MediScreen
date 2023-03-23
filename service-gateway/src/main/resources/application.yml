@@ -27,3 +27,14 @@ eureka:
       defaultZone: http://${EUREKA_HOST:localhost}:9102/eureka/
   instance:
     preferIpAddress: true
+
+
+management:
+  #Micrometer
+  tracing:
+    sampling:
+      probability : 1.0
+  #Zipkin
+  zipkin:
+    tracing:
+      endpoint : http://${ZIPKIN_HOST:localhost}:9411/api/v2/spans
