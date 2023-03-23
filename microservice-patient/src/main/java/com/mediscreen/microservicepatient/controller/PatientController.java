@@ -2,10 +2,13 @@ package com.mediscreen.microservicepatient.controller;
 
 import com.mediscreen.microservicepatient.model.Patient;
 import com.mediscreen.microservicepatient.service.IPatientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 public class PatientController {
