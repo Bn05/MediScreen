@@ -48,7 +48,14 @@ public class PatientServiceImpl implements IPatientService {
     }
 
     @Override
-    public Patient updatePatient(Patient patient) {
+    public Patient updatePatient(int id, Patient patient) {
+
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        if (patientOptional.isEmpty()) {
+            throw new NotFoundException("Patient not found !");
+        }
+
+        patient.setId(id);
 
         return patientRepository.save(patient);
     }
@@ -56,6 +63,11 @@ public class PatientServiceImpl implements IPatientService {
     @Override
     public void deletePatient(int id) {
 
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+
+        if (patientOptional.isEmpty()) {
+            throw new NotFoundException("Patient not found !");
+        }
         patientRepository.deleteById(id);
     }
 }

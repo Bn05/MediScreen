@@ -17,7 +17,7 @@ public interface IPatientService {
     public List<Patient> getAllPatient();
 
     //UPDATE
-    public Patient updatePatient(Patient patient);
+    public Patient updatePatient(int id, Patient patient);
 
     //DELETE
     public void deletePatient(int id);
