@@ -64,7 +64,6 @@ public class PatientServiceImpl implements IPatientService {
     public void deletePatient(int id) {
 
         Optional<Patient> patientOptional = patientRepository.findById(id);
-
         if (patientOptional.isEmpty()) {
             throw new NotFoundException("Patient not found !");
         }

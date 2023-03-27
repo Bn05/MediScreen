@@ -30,6 +30,18 @@ public class Patient {
     private String address;
     private String phoneNumber;
 
+    public Patient(String lastName, String firstName, LocalDate birthdate, String gender, String address, String phoneNumber) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Patient() {
+    }
+
 
     public int getId() {
         return id;
