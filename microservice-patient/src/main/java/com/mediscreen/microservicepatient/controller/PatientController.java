@@ -38,7 +38,9 @@ public class PatientController {
     @PutMapping("/patient/{id}")
     public Patient updatePatient(@PathVariable int id, @RequestBody Patient patient) {
 
-        return patientService.updatePatient(id, patient);
+        Patient patient1 = patientService.updatePatient(id, patient);
+
+        return patient1;
     }
 
     @DeleteMapping("patient/{id}")

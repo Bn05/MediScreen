@@ -77,6 +77,8 @@
         </dependency>
 
 
+
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -98,6 +100,40 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/exception/*</exclude>
+                        <exclude>**/model/*</exclude>
+                        <exclude>**/repository/*</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>3.3.1</version>
@@ -116,12 +152,10 @@
                     </to>
                 </configuration>
             </plugin>
-
-
         </plugins>
-
-
     </build>
+
+
     <repositories>
         <repository>
             <id>netflix-candidates</id>

@@ -2,6 +2,7 @@ package com.mediscreen.microservicepatient.UT.service;
 
 
 import com.mediscreen.microservicepatient.PatientTest;
+import com.mediscreen.microservicepatient.exception.NotFoundException;
 import com.mediscreen.microservicepatient.model.Patient;
 import com.mediscreen.microservicepatient.repository.PatientRepository;
 import com.mediscreen.microservicepatient.service.PatientServiceImpl;
@@ -10,11 +11,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.*;
 
 
@@ -53,6 +54,24 @@ class PatientServiceTest {
     }
 
     @Test
+    void getPatientByIdNoExist() {
+
+        when(patientRepositoryMock.findById(any())).thenReturn(Optional.empty());
+        boolean test = true;
+
+        try {
+            patientService.getPatientById(1);
+        }catch (NotFoundException e){
+            test = false;
+        }
+
+        verify(patientRepositoryMock,times(1)).findById(1);
+        assertFalse(test);
+
+
+    }
+
+    @Test
     void getAllPatient() {
 
         when(patientRepositoryMock.findAll()).thenReturn(patientTest.allPatient);
@@ -76,6 +95,22 @@ class PatientServiceTest {
     }
 
     @Test
+    void updatePatientNoExist() {
+
+        when(patientRepositoryMock.findById(any())).thenReturn(Optional.empty());
+        boolean test = true;
+
+        try {
+            patientService.updatePatient(1, patientTest.newPatient01);
+        }catch (NotFoundException e){
+            test = false;
+        }
+
+        verify(patientRepositoryMock,times(0)).save(patientTest.newPatient01);
+        assertFalse(test);
+    }
+
+    @Test
     void deletePatient() {
 
         when(patientRepositoryMock.findById(1)).thenReturn(Optional.ofNullable(patientTest.newPatient01));
@@ -84,6 +119,23 @@ class PatientServiceTest {
         patientService.deletePatient(1);
 
         verify(patientRepositoryMock, times(1)).deleteById(1);
+
+    }
+
+    @Test
+    void deletePatientNoExist() {
+
+        when(patientRepositoryMock.findById(any())).thenReturn(Optional.empty());
+        boolean test = true;
+
+        try {
+            patientService.deletePatient(1);
+        }catch (NotFoundException e){
+            test = false;
+        }
+
+        verify(patientRepositoryMock,times(0)).deleteById(1);
+        assertFalse(test);
 
     }
 }
