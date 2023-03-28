@@ -1,5 +1,7 @@
 package com.mediscreen.serviceui.bean;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -7,10 +9,14 @@ import java.time.LocalDate;
 public class PatientBean {
 
     private int id;
+    @NotBlank(message = "Cant be empty")
     private String lastName;
+    @NotBlank(message = "Cant be empty")
     private String firstName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "Merci d'indiquer votre date de naissance")
     private LocalDate birthdate;
+    @NotBlank(message = "Cant be empty")
     private String gender;
     private String address;
     private String phoneNumber;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Spring Boot </title>
+    <base href="http://localhost:8888/mediscreen/ui/">
+</head>
+<body>
+
+<h1>WELCOME</h1>
+
+<div id="tab">
+    <a href="patient/add">Add New</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>LastName</th>
+            <th>FirstName</th>
+            <th>Birthdate</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone number</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="patient :${allPatient}">
+            <td th:text="${patient.lastName}"/>
+            <td th:text="${patient.firstName}"/>
+            <td th:text="${patient.birthdate}"/>
+            <td th:text="${patient.gender}"/>
+            <td th:text="${patient.address}"/>
+            <td th:text="${patient.phoneNumber}"/>
+
+            <td>
+                <a th:href="@{patient/update/{id}(id=${patient.id})}">Edit</a> |
+                <a th:href="@{patient/delete/{id}(id=${patient.id})}">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

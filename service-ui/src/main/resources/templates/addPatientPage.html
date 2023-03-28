@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<base href="http://localhost:8888/mediscreen/ui/">
+<head>
+    <title> Spring Boot </title>
+</head>
+<body>
+
+<h1>WELCOME ADD PATIENT</h1>
+
+
+<div id="add">
+    <form th:action="@{patient/add}" th:object="${patientBean}" method="post">
+
+
+        <div class="champ">
+            <label for="firstName"> FirstName</label>
+            <div>
+                <input type="text" id="firstName" th:field="*{firstName}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+            </div>
+        </div>
+
+        <div class="champ">
+            <label for="lastName"> lastName</label>
+            <div>
+                <input type="text" id="lastName" th:field="*{lastName}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            </div>
+        </div>
+
+        <div class="champ">
+            <label for="birthdate"> birthdate</label>
+            <div>
+                <input type="date" id="birthdate" th:field="*{birthdate}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></p>
+            </div>
+        </div>
+
+        <div class="champ">
+            <label for="gender"> gender</label>
+            <div>
+                <input type="text" id="gender" th:field="*{gender}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+            </div>
+        </div>
+
+        <div class="champ">
+            <label for="address"> address</label>
+            <div>
+                <input type="text" id="address" th:field="*{address}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+            </div>
+        </div>
+
+        <div class="champ">
+            <label for="phoneNumber"> phoneNumber</label>
+            <div>
+                <input type="text" id="phoneNumber" th:field="*{phoneNumber}"><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+            </div>
+        </div>
+
+        <div class="valid">
+            <a class="cancel" href="">Cancel</a>
+            <input class="valid_bottom" type="submit" value="Add Patient">
+
+        </div>
+
+
+    </form>
+
+
+</div>
+
+
+</body>
+</html>
