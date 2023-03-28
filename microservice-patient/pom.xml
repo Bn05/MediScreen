@@ -77,8 +77,6 @@
         </dependency>
 
 
-
-
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -102,7 +100,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                            </plugin>
+            </plugin>
 
             <plugin>
                 <groupId>org.jacoco</groupId>

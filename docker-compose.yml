@@ -13,7 +13,7 @@ services:
     restart: always
     volumes:
       - ./init:/docker-entrypoint-initdb.d/:rw
-      - mediscreenDB:/var/lib/mysql:rw
+      - mysql_db:/var/lib/mysql:rw
 
   mongodb:
     image: mongo:latest
@@ -22,9 +22,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: rootroot #must be change in prod
     restart: always
     volumes:
-      - mediscreenDB:/data/db
-
-
+      - mongo_db:/data/db
+    ports:
+      - "27017:27017"
 
 
   zipkin:
@@ -51,9 +51,24 @@ services:
         -DMYSQL_PASSWORD="rootroot"
         -DEUREKA_HOST="service-eureka"
         -DZIPKIN_HOST="zipkin"
-
     depends_on:
       - mysqldb
+
+  microservice-note:
+    image: microservice-note
+    environment:
+      - JAVA_TOOL_OPTIONS=
+        -DMONGO_HOST="mongodb"
+        -DMONGO_USER="root"
+        -DMONGO_PASSWORD="rootroot"
+        -DEUREKA_HOST="service-eureka"
+        -DZIPKIN_HOST="zipkin"
+    depends_on:
+      - mongodb
+    ports:
+      - 8082:8082
+
+
 
   service-ui:
     image: service-ui
@@ -63,4 +78,5 @@ services:
         -DZIPKIN_HOST="zipkin"
 
 volumes:
-  mediscreenDB:
+  mysql_db:
+  mongo_db:
