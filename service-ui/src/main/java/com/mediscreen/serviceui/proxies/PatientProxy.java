@@ -1,7 +1,6 @@
 package com.mediscreen.serviceui.proxies;
 
 import com.mediscreen.serviceui.bean.PatientBean;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

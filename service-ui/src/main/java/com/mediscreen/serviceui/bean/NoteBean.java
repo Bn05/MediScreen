@@ -1,17 +1,13 @@
-package com.mediscreen.microservicenote.model;
+package com.mediscreen.serviceui.bean;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Document(collection = "notes")
-public class Note {
+public class NoteBean {
 
-    @Id
     private String id;
     @NotNull
     private int patientId;
@@ -28,6 +24,7 @@ public class Note {
     public void setId(String id) {
         this.id = id;
     }
+
     public int getPatientId() {
         return patientId;
     }

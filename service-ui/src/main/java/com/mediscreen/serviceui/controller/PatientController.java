@@ -1,6 +1,8 @@
 package com.mediscreen.serviceui.controller;
 
+import com.mediscreen.serviceui.bean.NoteBean;
 import com.mediscreen.serviceui.bean.PatientBean;
+import com.mediscreen.serviceui.proxies.NoteProxy;
 import com.mediscreen.serviceui.proxies.PatientProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +12,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class PatientController {
 
     private final PatientProxy patientProxy;
+    private final NoteProxy noteProxy;
 
-    public PatientController(PatientProxy patientProxy) {
+    public PatientController(PatientProxy patientProxy, NoteProxy noteProxy) {
         this.patientProxy = patientProxy;
+        this.noteProxy = noteProxy;
     }
 
     @GetMapping("/")
@@ -25,6 +31,19 @@ public class PatientController {
         model.addAttribute("allPatient", patientProxy.getAllPatient());
 
         return "/Patients";
+    }
+
+    @GetMapping("/patient/{id}/details")
+    public String patientDetails(@PathVariable int id, Model model) {
+
+        PatientBean patient = patientProxy.getPatientById(id);
+        List<NoteBean> notes = noteProxy.getNoteByPatient(id);
+
+        model.addAttribute("patientBean", patient);
+        model.addAttribute("notes", notes);
+
+        return "patientPage";
+
     }
 
     @GetMapping("/patient/add")
@@ -77,8 +96,6 @@ public class PatientController {
 
         return "redirect:http://localhost:8888/mediscreen/ui/";
     }
-
-
 
 
 }
