@@ -22,7 +22,6 @@ public class PatientTest {
             "addressTest",
             "0000000"
     );
-
     public Patient newPatient02 = new Patient(
             "LastName",
             "FirstName",
@@ -31,7 +30,6 @@ public class PatientTest {
             "addressTest",
             "0000000"
     );
-
     public List<Patient> allPatient = Arrays.asList(newPatient01, newPatient02);
 
 
@@ -49,4 +47,28 @@ public class PatientTest {
 
         return objectMapper.writeValueAsString(allPatient);
     }
+
+    public String updatePatientJson() throws JsonProcessingException {
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
+        return objectMapper.writeValueAsString(patientUpdate());
+    }
+
+    public Patient patientUpdate() {
+        Patient updatePatient = new Patient(
+                "LastNameUpdate",
+                "FirstNameUpdate",
+                LocalDate.of(2023, 3, 27),
+                "OtherUpdate",
+                "addressTestUpdate",
+                "0000000Update"
+        );
+
+        updatePatient.setId(1);
+
+        return updatePatient;
+    }
+
+
 }
