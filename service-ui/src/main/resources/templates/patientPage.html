@@ -10,49 +10,34 @@
 
 <h2 th:text="${patientBean.firstName}"></h2>
 
+<form th:action="@{add/note/{id}(id=${patientBean.id})}" name="note" method="post">
+    <label for="note"></label>
+    <textarea id="note" name="note" rows="5" cols="50">
+    </textarea>
+    <br>
+    <input type="submit" value="Add note">
+</form>
+
 <div id="tab">
     <table>
         <thead>
         <tr>
-            <th>Note</th>
             <th>Date</th>
+            <th>Note</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="note :${notes}">
             <td th:text="${note.date}"/>
-
-
             <td>
                 <label for="notes"></label>
-                <textarea id="notes" disabled th:text="${note.note}">
+                <textarea id="notes" rows="5" cols="50" disabled th:text="${note.note}">
                 </textarea>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-
-
-<form th:action="@{add/note/{id}(id=${patientBean.id})}" name="note" method="post">
-    <label for="note">Tell us your story:</label>
-    <textarea id="note" name="note" rows="5" cols="33">
-    </textarea>
-    <input type="submit">
-</form>
-
-
-<form th:action="@{add/note/{id}(id=${patientBean.id})}" name="note" method="post">
-
-    <div class="champ">
-        <label for="birthdate"> testa</label>
-        <div>
-            <input type="text" id="birthdate"><br>
-
-        </div>
-    </div>
-    <input type="submit">
-</form>
 
 
 </body>

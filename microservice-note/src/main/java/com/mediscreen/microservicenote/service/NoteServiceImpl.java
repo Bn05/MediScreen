@@ -40,7 +40,7 @@ public class NoteServiceImpl implements INoteService {
 
     @Override
     public List<Note> getNoteByPatient(int id) {
-        return noteRepository.findAllByPatientIdOrderByDate(id);
+        return noteRepository.findAllByPatientIdOrderByDateDesc(id);
     }
 
     @Override
