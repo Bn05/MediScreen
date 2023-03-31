@@ -49,8 +49,6 @@ class PatientControllerTest {
     @Test
     void addPatientBadRequest() throws Exception {
 
-        when(patientService.addPatient(any())).thenReturn(patientTest.newPatient01);
-
         mockMvc.perform(post("/patient"))
                 .andExpect(status().isBadRequest());
     }

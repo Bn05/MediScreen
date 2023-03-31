@@ -1,9 +1,7 @@
 package com.mediscreen.microservicenote.controller;
 
 import com.mediscreen.microservicenote.model.Note;
-import com.mediscreen.microservicenote.repository.NoteRepository;
 import com.mediscreen.microservicenote.service.INoteService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

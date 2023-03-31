@@ -21,6 +21,15 @@ public class Note {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
+    public Note(int patientId, String note, LocalDate date) {
+        this.patientId = patientId;
+        this.note = note;
+        this.date = date;
+    }
+
+    public Note() {
+    }
+
     public String getId() {
         return id;
     }
