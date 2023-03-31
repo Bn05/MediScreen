@@ -23,6 +23,7 @@ services:
     restart: always
     volumes:
       - mongo_db:/data/db
+      - mongo_db:/data/configdb
     ports:
       - "27017:27017"
 
