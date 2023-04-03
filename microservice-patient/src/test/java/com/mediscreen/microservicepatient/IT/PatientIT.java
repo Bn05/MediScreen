@@ -25,9 +25,6 @@ public class PatientIT {
     PatientRepository patientRepository;
 
     @Autowired
-    IPatientService patientService;
-
-    @Autowired
     MockMvc mockMvc;
 
     PatientTest patientTest = new PatientTest();

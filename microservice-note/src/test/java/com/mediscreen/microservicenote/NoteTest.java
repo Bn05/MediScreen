@@ -50,10 +50,12 @@ public class NoteTest {
         return objectMapper.writeValueAsString(note02);
     }
 
-    public String noteUpdateJson() throws JsonProcessingException {
+    public String noteUpdateJson(String id) throws JsonProcessingException {
 
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
+        noteUpdate.setId(id);
 
         return objectMapper.writeValueAsString(noteUpdate);
     }
