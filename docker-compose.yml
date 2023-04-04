@@ -69,7 +69,12 @@ services:
     ports:
       - 8082:8082
 
-
+  microservice-score:
+    image: microservice-score
+    environment:
+      - JAVA_TOOL_OPTIONS=        
+        -DEUREKA_HOST="service-eureka"
+        -DZIPKIN_HOST="zipkin"
 
   service-ui:
     image: service-ui

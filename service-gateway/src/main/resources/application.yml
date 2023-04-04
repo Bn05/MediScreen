@@ -21,6 +21,7 @@ spring:
           filters:
             - StripPrefix=2
 
+
 eureka:
   client:
     serviceUrl:

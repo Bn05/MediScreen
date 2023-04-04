@@ -4,6 +4,7 @@ import com.mediscreen.serviceui.bean.NoteBean;
 import com.mediscreen.serviceui.bean.PatientBean;
 import com.mediscreen.serviceui.proxies.NoteProxy;
 import com.mediscreen.serviceui.proxies.PatientProxy;
+import com.mediscreen.serviceui.proxies.ScoreProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,10 +20,12 @@ public class PatientController {
 
     private final PatientProxy patientProxy;
     private final NoteProxy noteProxy;
+    private final ScoreProxy scoreProxy;
 
-    public PatientController(PatientProxy patientProxy, NoteProxy noteProxy) {
+    public PatientController(PatientProxy patientProxy, NoteProxy noteProxy, ScoreProxy scoreProxy) {
         this.patientProxy = patientProxy;
         this.noteProxy = noteProxy;
+        this.scoreProxy = scoreProxy;
     }
 
     @GetMapping("/")
@@ -38,9 +41,11 @@ public class PatientController {
 
         PatientBean patient = patientProxy.getPatientById(id);
         List<NoteBean> notes = noteProxy.getNoteByPatient(id);
+        String score = scoreProxy.getDiabeteRisk(id);
 
         model.addAttribute("patientBean", patient);
         model.addAttribute("notes", notes);
+        model.addAttribute("score", score);
 
         return "patientPage";
 

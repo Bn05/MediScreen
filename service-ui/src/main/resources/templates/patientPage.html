@@ -9,6 +9,8 @@
 <h1>WELCOME PATIENT PAGE</h1>
 
 <h2 th:text="${patientBean.firstName}"></h2>
+<h3 th:text="${score}"></h3>
+
 
 <form th:action="@{add/note/{id}(id=${patientBean.id})}" name="note" method="post">
     <label for="note"></label>

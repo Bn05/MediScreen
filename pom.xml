@@ -14,6 +14,7 @@
     <modules>
         <module>microservice-patient</module>
         <module>microservice-note</module>
+        <module>microservice-score</module>
         <module>service-eureka</module>
         <module>service-gateway</module>
         <module>service-ui</module>
