@@ -10,7 +10,21 @@ spring:
         - id: microservice-patient
           uri: lb://microservice-patient
           predicates:
-            - Path=/mediscreen/api/**
+            - Path=/mediscreen/api/patient/**
+          filters:
+            - StripPrefix=2
+
+        - id: microservice-note
+          uri: lb://microservice-note
+          predicates:
+            - Path=/mediscreen/api/note/**
+          filters:
+            - StripPrefix=2
+
+        - id: microservice-score
+          uri: lb://microservice-score
+          predicates:
+            - Path=/mediscreen/api/score/**
           filters:
             - StripPrefix=2
 

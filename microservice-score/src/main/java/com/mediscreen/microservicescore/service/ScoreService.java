@@ -79,7 +79,7 @@ public class ScoreService {
                 .map(String::trim)
                 .flatMap(Pattern.compile(" ")::splitAsStream)
                 .filter(w1 -> triggerList.contains(w1))
-                //.distinct()
+                .distinct()
                 .count();
     }
 

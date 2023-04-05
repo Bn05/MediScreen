@@ -14,7 +14,7 @@ public class ScoreController {
         this.scoreService = scoreService;
     }
 
-    @GetMapping("/patient/score/{id}")
+    @GetMapping("/score/patient/{id}")
     public String getDiabeteRisk(@PathVariable int id){
 
         return scoreService.getDiabeteRisk(id);

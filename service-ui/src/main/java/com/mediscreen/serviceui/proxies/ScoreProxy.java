@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @LoadBalancerClient(name = "microservice-score")
 public interface ScoreProxy {
 
-    @GetMapping("/patient/score/{id}")
+    @GetMapping("/score/patient/{id}")
     public String getDiabeteRisk(@PathVariable int id);
 }
