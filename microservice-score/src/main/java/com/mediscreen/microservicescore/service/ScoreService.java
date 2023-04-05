@@ -29,61 +29,77 @@ public class ScoreService {
 
     public String getDiabeteRisk(int id) {
 
-        List<Serializable> patientAndGender = getPatientAndGender(id);
+        List<Serializable> patientAgeAndGender = getPatientAgeAndGender(id);
 
-        int age = (int) patientAndGender.get(0);
-        String gender = (String) patientAndGender.get(1);
+        int age = (int) patientAgeAndGender.get(0);
+        String gender = (String) patientAgeAndGender.get(1);
         long triggerScore = getTriggerScore(id);
 
 
-        if (triggerScore == 0) {
-            return "None";
+        // Homme de moins de 30ans.
+        if (gender.equals("H") && age < 30) {
+
+            if (triggerScore <= 2) {
+                return "NONE";
+            }
+
+            if (triggerScore <= 4) {
+                return "IN DANGER";
+            }
+
+            return "EARLY ONSET";
         }
 
-        if (triggerScore == 2 && age > 30) {
-            return "Bordeline";
+        // Femme de moins de 30ans.
+        if (gender.equals("F") && age < 30) {
+
+            if (triggerScore <= 3) {
+                return "NONE";
+            }
+
+            if (triggerScore <= 6) {
+                return "IN DANGER";
+            }
+
+            return "EARLY ONSET";
         }
 
-        if (gender.equals("H") && age < 30 && triggerScore == 3) {
-            return "In Danger";
+        // Patient (homme ou femme) de plus de 30 ans.
+        if (age >= 30) {
+
+            if (triggerScore <= 1) {
+                return "NONE";
+            }
+
+            if (triggerScore <= 5) {
+                return "BORDERLINE";
+            }
+
+            if (triggerScore <= 7) {
+                return "IN DANGER";
+            }
+
+            return "EARLY ONSET";
         }
 
-        if (gender.equals("F") && age < 30 && triggerScore == 4) {
-            return "In Danger";
-        }
+        return "Nous n'avons pu déterminer les risques du patient";
 
-        if (age > 30 && triggerScore == 6 ) {
-            return "In Danger";
-        }
 
-        if (gender.equals("H") && age < 30 && triggerScore == 5) {
-            return "Early onset";
-        }
-
-        if (gender.equals("F") && age < 30 && triggerScore == 7) {
-            return "Early onset";
-        }
-
-        if (age > 30 && triggerScore >= 8) {
-            return "Early onset";
-        }
-
-        return "null";
     }
 
 
-    public long getTriggerScore(int id) {
+    private long getTriggerScore(int id) {
 
         return noteProxy.getNoteByPatient(id).stream()
                 .map(NoteBean::getNote)
                 .map(String::trim)
                 .flatMap(Pattern.compile(" ")::splitAsStream)
                 .filter(w1 -> triggerList.contains(w1))
-                .distinct()
+                //.distinct() //TODO ME BUST REACTIVATE IN SERVICE
                 .count();
     }
 
-    public List<Serializable> getPatientAndGender(int id) {
+    private List<Serializable> getPatientAgeAndGender(int id) {
 
         PatientBean patient = patientProxy.getPatient(id);
 
