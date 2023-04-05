@@ -14,19 +14,19 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
-public class ScoreService {
+public class ScoreServiceImpl implements IScoreService {
 
     private final NoteProxy noteProxy;
     private final PatientProxy patientProxy;
 
     private List<String> triggerList = Arrays.asList("avion", "voiture", "bateau");
 
-    public ScoreService(NoteProxy noteProxy, PatientProxy patientProxy) {
+    public ScoreServiceImpl(NoteProxy noteProxy, PatientProxy patientProxy) {
         this.noteProxy = noteProxy;
         this.patientProxy = patientProxy;
     }
 
-
+    @Override
     public String getDiabeteRisk(int id) {
 
         List<Serializable> patientAgeAndGender = getPatientAgeAndGender(id);

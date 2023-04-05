@@ -1,6 +1,7 @@
 package com.mediscreen.microservicescore.Controller;
 
-import com.mediscreen.microservicescore.service.ScoreService;
+import com.mediscreen.microservicescore.service.IScoreService;
+import com.mediscreen.microservicescore.service.ScoreServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ScoreController {
 
-    private final ScoreService scoreService;
+    private final IScoreService scoreService;
 
-    public ScoreController(ScoreService scoreService) {
+    public ScoreController(ScoreServiceImpl scoreService) {
         this.scoreService = scoreService;
     }
 
