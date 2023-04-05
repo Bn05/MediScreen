@@ -4,6 +4,8 @@ import com.mediscreen.microservicescore.model.NoteBean;
 import com.mediscreen.microservicescore.model.PatientBean;
 import com.mediscreen.microservicescore.proxies.NoteProxy;
 import com.mediscreen.microservicescore.proxies.PatientProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -13,12 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-@Service
+
 public class ScoreServiceImpl implements IScoreService {
 
+    Logger log = LoggerFactory.getLogger(this.getClass());
     private final NoteProxy noteProxy;
     private final PatientProxy patientProxy;
 
+    //TODO : Modifier d'déclencheur
     private List<String> triggerList = Arrays.asList("avion", "voiture", "bateau");
 
     public ScoreServiceImpl(NoteProxy noteProxy, PatientProxy patientProxy) {
@@ -90,6 +94,8 @@ public class ScoreServiceImpl implements IScoreService {
 
     private long getTriggerScore(int id) {
 
+        log.info("Get trigger score for patient : " + id);
+
         return noteProxy.getNoteByPatient(id).stream()
                 .map(NoteBean::getNote)
                 .map(String::trim)
@@ -105,6 +111,8 @@ public class ScoreServiceImpl implements IScoreService {
 
         int age = Period.between(patient.getBirthdate(), LocalDate.now()).getYears();
         String gender = patient.getGender();
+
+        log.info("Get info patient || age = " + age + " || gender = " + gender);
 
         return Arrays.asList(age, gender);
     }
