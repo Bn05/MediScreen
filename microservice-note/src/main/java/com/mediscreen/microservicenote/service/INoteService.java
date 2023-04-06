@@ -23,4 +23,6 @@ public interface INoteService {
 
     //DELETE
     public void deleteNoteById(String id);
+
+    public void deleteNoteByPatientId(int id);
 }

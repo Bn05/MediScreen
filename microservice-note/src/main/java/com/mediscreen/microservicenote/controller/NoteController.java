@@ -53,4 +53,10 @@ public class NoteController {
         log.info("Delete note with id = "+id);
         noteService.deleteNoteById(id);
     }
+
+    @DeleteMapping("/note/patient/{id}")
+    public void deleteNoteByPatientId(@PathVariable int id){
+        log.info("Delete note's Patient id = "+id);
+        noteService.deleteNoteByPatientId(id);
+    }
 }

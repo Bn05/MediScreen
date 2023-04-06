@@ -35,8 +35,8 @@ public class NoteController {
 
 
         return "redirect:http://localhost:8888/mediscreen/ui/patient/"+idPatient+"/details";
-
-
     }
+
+
 
 }

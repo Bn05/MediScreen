@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 
+@Service
 public class ScoreServiceImpl implements IScoreService {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
@@ -23,7 +24,18 @@ public class ScoreServiceImpl implements IScoreService {
     private final PatientProxy patientProxy;
 
     //TODO : Modifier d'déclencheur
-    private List<String> triggerList = Arrays.asList("avion", "voiture", "bateau");
+    private List<String> triggerList = Arrays.asList(
+            "Hémoglobine A1C",
+            "Microalbumine",
+            "Taille",
+            "Poids",
+            "Fumeur",
+            "Anormal",
+            "Cholestérol",
+            "Vertige",
+           "Rechute",
+            "Réaction",
+            "Anticorps");
 
     public ScoreServiceImpl(NoteProxy noteProxy, PatientProxy patientProxy) {
         this.noteProxy = noteProxy;

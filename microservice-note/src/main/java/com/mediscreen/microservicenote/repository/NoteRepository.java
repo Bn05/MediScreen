@@ -10,4 +10,6 @@ import java.util.List;
 public interface NoteRepository extends MongoRepository<Note, String> {
 
 public List<Note> findAllByPatientIdOrderByDateDesc(int id);
+
+public void deleteNoteByPatientId(int id);
 }

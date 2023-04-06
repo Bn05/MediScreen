@@ -98,6 +98,7 @@ public class PatientController {
     public String deletePatient(@PathVariable int id) {
 
         patientProxy.deletePatient(id);
+        noteProxy.deleteNoteByPatientId(id);
 
         return "redirect:http://localhost:8888/mediscreen/ui/";
     }

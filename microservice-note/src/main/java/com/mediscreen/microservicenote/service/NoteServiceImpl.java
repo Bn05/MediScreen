@@ -81,6 +81,13 @@ public class NoteServiceImpl implements INoteService {
         noteRepository.deleteById(id);
         log.info("Delete note with id ="+id+" to dataBase");
     }
+
+    @Override
+    public void deleteNoteByPatientId(int id) {
+
+        noteRepository.deleteNoteByPatientId(id);
+
+    }
 }
 
 

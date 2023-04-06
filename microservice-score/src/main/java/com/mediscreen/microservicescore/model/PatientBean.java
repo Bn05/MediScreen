@@ -14,6 +14,18 @@ public class PatientBean {
     private String address;
     private String phoneNumber;
 
+    public PatientBean() {
+    }
+
+    public PatientBean(int id, String lastName, String firstName, LocalDate birthdate, String gender) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.birthdate = birthdate;
+        this.gender = gender;
+    }
+
+
     public int getId() {
         return id;
     }

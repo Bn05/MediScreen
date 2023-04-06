@@ -12,6 +12,15 @@ public class NoteBean {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
+    public NoteBean() {
+    }
+
+    public NoteBean(int patientId, String note, LocalDate date) {
+        this.patientId = patientId;
+        this.note = note;
+        this.date = date;
+    }
+
     public String getId() {
         return id;
     }
