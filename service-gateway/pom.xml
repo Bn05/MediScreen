@@ -90,6 +90,7 @@
 					</to>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 	<repositories>
