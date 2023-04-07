@@ -25,17 +25,17 @@ public class ScoreServiceImpl implements IScoreService {
 
     //TODO : Modifier d'déclencheur
     private List<String> triggerList = Arrays.asList(
-            "Hémoglobine A1C",
-            "Microalbumine",
-            "Taille",
-            "Poids",
-            "Fumeur",
-            "Anormal",
-            "Cholestérol",
-            "Vertige",
-           "Rechute",
-            "Réaction",
-            "Anticorps");
+            "hémoglobine A1C",
+            "microalbumine",
+            "taille",
+            "poids",
+            "fumeur",
+            "anormal",
+            "cholestérol",
+            "vertige",
+            "rechute",
+            "réaction",
+            "anticorps");
 
     public ScoreServiceImpl(NoteProxy noteProxy, PatientProxy patientProxy) {
         this.noteProxy = noteProxy;
@@ -53,7 +53,7 @@ public class ScoreServiceImpl implements IScoreService {
 
 
         // Homme de moins de 30ans.
-        if (gender.equals("H") && age < 30) {
+        if (gender.equals("M") && age < 30) {
 
             if (triggerScore <= 2) {
                 return "NONE";
@@ -84,18 +84,18 @@ public class ScoreServiceImpl implements IScoreService {
         if (age >= 30) {
 
             if (triggerScore <= 1) {
-                return "NONE";
+                return "NONE"+triggerScore;
             }
 
             if (triggerScore <= 5) {
-                return "BORDERLINE";
+                return "BORDERLINE"+triggerScore;
             }
 
             if (triggerScore <= 7) {
-                return "IN DANGER";
+                return "IN DANGER"+triggerScore;
             }
 
-            return "EARLY ONSET";
+            return "EARLY ONSET"+triggerScore;
         }
 
         return "Nous n'avons pu déterminer les risques du patient";
@@ -110,10 +110,11 @@ public class ScoreServiceImpl implements IScoreService {
 
         return noteProxy.getNoteByPatient(id).stream()
                 .map(NoteBean::getNote)
+                .map(String::toLowerCase)
                 .map(String::trim)
                 .flatMap(Pattern.compile(" ")::splitAsStream)
                 .filter(w1 -> triggerList.contains(w1))
-                //.distinct() //TODO ME BUST REACTIVATE IN SERVICE
+                .distinct()
                 .count();
     }
 
