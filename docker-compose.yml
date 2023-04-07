@@ -12,7 +12,7 @@ services:
       MYSQL_ROOT_PASSWORD: "rootroot" #must be change in prod
     restart: always
     volumes:
-      - ./init:/docker-entrypoint-initdb.d/:rw
+      - ./docker-entrypoint/patient.sql:/docker-entrypoint-initdb.d/patient.sql:ro
       - mysql_db:/var/lib/mysql:rw
 
   mongodb:
@@ -22,6 +22,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: rootroot #must be change in prod
     restart: always
     volumes:
+      - ./docker-entrypoint/note.js:/docker-entrypoint-initdb.d/note.js:ro
       - mongo_db:/data/db
       - mongo_db:/data/configdb
     ports:

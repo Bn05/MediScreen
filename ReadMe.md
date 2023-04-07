@@ -19,7 +19,7 @@ Check that you have :
 ### Installation
 
 1. Select the Mediscreen directory
-2. Run test and create docker images.
+2. Run test and create docker images (Docker must be run !).
    1. On linux
       1. 
          ```sh
