@@ -13,7 +13,7 @@ public class PatientTest {
             "LastName",
             "FirstName",
             LocalDate.now(),
-            "H"
+            "M"
     );
 
     public PatientBean patientHommePlus30Ans = new PatientBean(
@@ -21,7 +21,7 @@ public class PatientTest {
             "LastName",
             "FirstName",
             LocalDate.of(1090, 1, 1),
-            "H"
+            "M"
     );
 
     public PatientBean patientFemmeMoins30Ans = new PatientBean(

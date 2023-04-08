@@ -44,5 +44,6 @@ Check that you have :
     ```
 4. To access the WebApp, open your browser, go to [http://localhost:8888/mediscreen/ui](http://localhost:8888/mediscreen/ui)
 5. To access the API, call [http://localhost:8888/mediscreen/api](http://localhost:8888/mediscreen/api).
-6. Swagger
-7. Zipkin
+6. Swagger http://localhost:8888/mediscreen/api/note/index.html
+7. http://localhost:8888/mediscreen/api/note/index.html
+7. You can use Zipkin to follow request : [ http://localhost:9411/zipkin]( http://localhost:9411/zipkin)

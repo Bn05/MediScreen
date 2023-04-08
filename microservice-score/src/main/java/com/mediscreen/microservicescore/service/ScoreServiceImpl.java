@@ -84,18 +84,18 @@ public class ScoreServiceImpl implements IScoreService {
         if (age >= 30) {
 
             if (triggerScore <= 1) {
-                return "NONE"+triggerScore;
+                return "NONE";
             }
 
             if (triggerScore <= 5) {
-                return "BORDERLINE"+triggerScore;
+                return "BORDERLINE";
             }
 
             if (triggerScore <= 7) {
-                return "IN DANGER"+triggerScore;
+                return "IN DANGER";
             }
 
-            return "EARLY ONSET"+triggerScore;
+            return "EARLY ONSET";
         }
 
         return "Nous n'avons pu déterminer les risques du patient";
