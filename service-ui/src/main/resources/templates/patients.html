@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Patient list </title>
+    <base href="http://localhost:8888/mediscreen/ui/">
+</head>
+
+<body>
+<header>
+    <div id="logo">
+        <img th:src="@{img/logo_mediscreen.png}">
+        <h1> MediScreen</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/patientList"> About</a></li>
+            <li><a href="/profilePage"> Services </a></li>
+            <li><a href="/contactPage">Ressources </a></li>
+            <li><a href="/logout">News Blog</a></li>
+        </ul>
+    </div>
+</header>
+<section>
+    <h1>Patient list</h1>
+    <div id="tab">
+        <a href="patient/add">Add New</a>
+        <table>
+            <thead>
+            <tr>
+                <th>LastName</th>
+                <th>FirstName</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient :${allPatient}">
+                <td th:text="${patient.lastName}"/>
+                <td th:text="${patient.firstName}"/>
+                <td>
+                    <a th:href="@{patient/{id}/details(id=${patient.id})}">View history</a> |
+                    <a th:href="@{patient/update/{id}(id=${patient.id})}">Edit</a> |
+                    <a th:href="@{patient/delete/{id}(id=${patient.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

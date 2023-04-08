@@ -28,12 +28,12 @@ public class PatientController {
         this.scoreProxy = scoreProxy;
     }
 
-    @GetMapping("/")
+    @GetMapping("/patient")
     public String patientList(Model model) {
 
         model.addAttribute("allPatient", patientProxy.getAllPatient());
 
-        return "/Patients";
+        return "patients";
     }
 
     @GetMapping("/patient/{id}/details")
@@ -47,7 +47,7 @@ public class PatientController {
         model.addAttribute("notes", notes);
         model.addAttribute("score", score);
 
-        return "patientPage";
+        return "historyPage";
 
     }
 
@@ -57,7 +57,7 @@ public class PatientController {
         PatientBean patientBean = new PatientBean();
         model.addAttribute("patientBean", patientBean);
 
-        return "/addPatientPage";
+        return "addPatient";
     }
 
 
@@ -66,12 +66,12 @@ public class PatientController {
                              BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/addPatientPage";
+            return "addPatient";
         }
 
         patientProxy.addPatient(patientBean);
 
-        return "redirect:http://localhost:8888/mediscreen/ui/";
+        return "redirect:http://localhost:8888/mediscreen/ui/patient";
     }
 
     @GetMapping("/patient/update/{id}")
@@ -79,19 +79,19 @@ public class PatientController {
 
         model.addAttribute("patientBean", patientProxy.getPatientById(id));
 
-        return "/updatePatientPage";
+        return "updatePatient";
     }
 
     @PostMapping("/patient/update/{id}")
     public String updatePatient(@PathVariable int id, @Validated PatientBean patientBean, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/updatePatientPage";
+            return "updatePatient";
         }
 
         patientProxy.updatePatient(id, patientBean);
 
-        return "redirect:http://localhost:8888/mediscreen/ui/";
+        return "redirect:http://localhost:8888/mediscreen/ui/patient";
     }
 
     @GetMapping("/patient/delete/{id}")
@@ -100,7 +100,7 @@ public class PatientController {
         patientProxy.deletePatient(id);
         noteProxy.deleteNoteByPatientId(id);
 
-        return "redirect:http://localhost:8888/mediscreen/ui/";
+        return "redirect:http://localhost:8888/mediscreen/ui/patient";
     }
 
 

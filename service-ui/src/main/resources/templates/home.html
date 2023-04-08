@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediScreen Home</title>
+    <base href="http://localhost:8888/mediscreen/ui/">
+</head>
+<body>
+<header>
+    <div id="logo">
+        <img th:src="@{img/logo_mediscreen.png}">
+        <h1> MediScreen</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/patientList"> About</a></li>
+            <li><a href="/profilePage"> Services </a></li>
+            <li><a href="/contactPage">Ressources </a></li>
+            <li><a href="/logout">News Blog</a></li>
+        </ul>
+    </div>
+</header>
+<section>
+    <div id="home">
+        <div id="presentation">
+            <h3>We care.</h3>
+            <p>
+                Mediscreen specializes in <br>
+                detecting risk factors for disease.<br>
+                Our screenings using predictive<br>
+                analysis of patient populations at<br>
+                an affordable cost.
+            </p>
+            <ul>
+                <li>Are you a small or rural clinic<br> or practice?</li>
+                <li>Do you need screenings for<br>
+                    heart disease or hyper<br>
+                    tension precursors?
+                </li>
+            </ul>
+            <h4>We have a solution for you.</h4>
+        </div>
+        <div id="imageHome">
+            <img th:src="@{img/imgHome.jpg}">
+        </div>
+    </div>
+</section>
+</body>
+</html>

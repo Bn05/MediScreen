@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<base href="http://localhost:8888/mediscreen/ui/">
 <head>
     <title> Spring Boot </title>
-    <base href="http://localhost:8888/mediscreen/ui/">
 </head>
 <body>
 
@@ -10,7 +10,7 @@
 
 
 <div id="add">
-    <form th:action="@{patient/update/{id}(id=${patientBean.id})}" th:object="${patientBean}" method="post">
+    <form th:action="@{patient/add}" th:object="${patientBean}" method="post">
 
 
         <div class="champ">
@@ -62,11 +62,17 @@
         </div>
 
         <div class="valid">
-            <input type="hidden" th:field="*{id}">
-            <a class="cancel" href="">Cancel</a>
-            <input class="valid_bottom" type="submit" value="Update Patient">
+            <a class="cancel" href="patient">Cancel</a>
+            <input class="valid_bottom" type="submit" value="Add Patient">
+
         </div>
+
+
     </form>
+
+
 </div>
+
+
 </body>
 </html>

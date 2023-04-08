@@ -11,10 +11,9 @@ public class NoteBean {
     private String id;
     @NotNull
     private int patientId;
-    @NotBlank
+    @NotBlank(message = "Cant be empty")
     private String note;
-    @NotBlank
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate date;
 
     public String getId() {

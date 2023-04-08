@@ -12,13 +12,14 @@
 <h3 th:text="${score}"></h3>
 
 
-<form th:action="@{add/note/{id}(id=${patientBean.id})}" name="note" method="post">
+<form th:action="@{note/add/{id}(id=${patientBean.id})}" name="note" method="post">
     <label for="note"></label>
-    <textarea id="note" name="note" rows="5" cols="50">
-    </textarea>
+    <textarea id="note" name="note" rows="5" cols="50" required ></textarea>
     <br>
     <input type="submit" value="Add note">
 </form>
+
+<a class="cancel" href="patient">Retour</a>
 
 <div id="tab">
     <table>
@@ -33,15 +34,18 @@
             <td th:text="${note.date}"/>
             <td>
                 <label for="notes"></label>
-                <textarea id="notes" rows="5" cols="50" disabled th:text="${note.note}">
-                </textarea>
+                <pre th:text="${note.note}" id="notes"></pre>
+            </td>
+            <td>
+                <a th:href="@{note/update/{id}(id=${note.id})}">Edit</a> |
+                <a th:href="@{note/delete/{id}(id=${note.id})}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<a class="cancel" href="">Retour</a>
+<a class="cancel" href="patient">Retour</a>
 
 
 </body>
