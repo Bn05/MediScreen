@@ -1,0 +1,18 @@
+#home{
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 30px;
+}
+
+#home h3{
+    color: #398196;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#home h4{
+    color: #398196;
+    font-size: 1.2em;
+    font-weight: bold;
+}

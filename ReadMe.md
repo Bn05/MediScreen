@@ -37,7 +37,12 @@ Check that you have :
       2.
          ```sh
          mvn clean package -pl "!microservice-patient,!microservice-note,!microservice-score" -DskipTests
-         ```        
+         ```   
+   3. Package without tests and report (faster)
+   ```sh
+    mvn package -DskipTests
+   ```
+     
 3. Execute
     ```sh
     docker-compose up -d 

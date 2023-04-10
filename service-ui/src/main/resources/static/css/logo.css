@@ -1,0 +1,24 @@
+#logo {
+    display: flex;
+    justify-content: space-around;
+
+    vertical-align: center;
+    width: 20%;
+    height: 10%;
+
+    margin: 15px 15px ;
+}
+
+#logo h1{
+    height: 5em;
+    margin-left: 0.75em;
+    }
+
+#logo_mediscreen {
+    height: 5em;
+    margin-left: 2em;
+}
+
+
+
+

@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>MediScreen Home</title>
     <base href="http://localhost:8888/mediscreen/ui/">
+    <link  th:href="@{css/logo.css}" href="css/logo.css" rel="stylesheet"/>
+    <link  th:href="@{css/menu.css}" href="css/menu.css" rel="stylesheet"/>
+    <link  th:href="@{css/home.css}" href="css/home.css" rel="stylesheet"/>
+
 </head>
 <body>
 <header>
     <div id="logo">
-        <img th:src="@{img/logo_mediscreen.png}">
+        <img id="logo_mediscreen" th:src="@{img/logo_mediscreen.png}"  alt="logo_mediscreen">
         <h1> MediScreen</h1>
     </div>
     <div id="menu">
         <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/patientList"> About</a></li>
-            <li><a href="/profilePage"> Services </a></li>
-            <li><a href="/contactPage">Ressources </a></li>
-            <li><a href="/logout">News Blog</a></li>
+            <li><a href="home">Home</a></li>
+            <li><a href="buildPage"> About</a></li>
+            <li><a href="patient"> Services </a></li>
+            <li><a href="buildPage">Ressources </a></li>
+            <li><a href="buildPage">News Blog</a></li>
         </ul>
     </div>
 </header>
@@ -42,7 +46,7 @@
             <h4>We have a solution for you.</h4>
         </div>
         <div id="imageHome">
-            <img th:src="@{img/imgHome.jpg}">
+            <img th:src="@{img/imgHome.png}">
         </div>
     </div>
 </section>

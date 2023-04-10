@@ -19,4 +19,9 @@ public class HomeController {
         return "redirect:http://localhost:8888/mediscreen/ui/home";
     }
 
+    @GetMapping("/buildPage")
+    public String buildPage(){
+        return "/buildPage";
+    }
+
 }
