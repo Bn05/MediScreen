@@ -2,8 +2,29 @@
 <head>
     <title> Update Your Note </title>
     <base href="http://localhost:8888/mediscreen/ui/">
+    <link  th:href="@{css/logo.css}" href="css/logo.css" rel="stylesheet"/>
+    <link  th:href="@{css/menu.css}" href="css/menu.css" rel="stylesheet"/>
+    <link  th:href="@{css/home.css}" href="css/home.css" rel="stylesheet"/>
+    <link  th:href="@{css/updateNote.css}" href="updateNote/home.css" rel="stylesheet"/>
 </head>
 <body>
+<header>
+    <div id="logo">
+        <img id="logo_mediscreen" th:src="@{img/logo_mediscreen.png}"  alt="logo_mediscreen">
+        <h1> MediScreen</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="home">Home</a></li>
+            <li><a href="buildPage"> About</a></li>
+            <li><a href="patient"> Services </a></li>
+            <li><a href="buildPage">Ressources </a></li>
+            <li><a href="buildPage">News Blog</a></li>
+        </ul>
+    </div>
+</header>
+
+<section>
 
 <div id="add">
     <form th:action="@{note/update}" th:object="${note}" method="post">
@@ -22,7 +43,7 @@
         </div>
     </form>
 </div>
-
+</section>
 
 </body>
 </html>

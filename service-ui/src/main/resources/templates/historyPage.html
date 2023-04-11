@@ -3,50 +3,68 @@
 <head>
     <title> Spring Boot </title>
     <base href="http://localhost:8888/mediscreen/ui/">
+    <link  th:href="@{css/logo.css}" href="css/logo.css" rel="stylesheet"/>
+    <link  th:href="@{css/menu.css}" href="css/menu.css" rel="stylesheet"/>
+    <link  th:href="@{css/home.css}" href="css/home.css" rel="stylesheet"/>
+    <link  th:href="@{css/historyPage.css}" href="css/historyPage.css" rel="stylesheet"/>
 </head>
 <body>
+<header>
+    <div id="logo">
+        <img id="logo_mediscreen" th:src="@{img/logo_mediscreen.png}"  alt="logo_mediscreen">
+        <h1> MediScreen</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="home">Home</a></li>
+            <li><a href="buildPage"> About</a></li>
+            <li><a href="patient"> Services </a></li>
+            <li><a href="buildPage">Ressources </a></li>
+            <li><a href="buildPage">News Blog</a></li>
+        </ul>
+    </div>
+</header>
+<section>
+    <h2 >
+        <span th:text="${patientBean.firstName}"/> <span th:text="${patientBean.lastName}"/>
+    </h2>
 
-<h1>WELCOME PATIENT PAGE</h1>
-
-<h2 th:text="${patientBean.firstName}"></h2>
-<h3 th:text="${score}"></h3>
+    <h3 >Diabete Risk : <span th:text="${score}"/></h3>
 
 
-<form th:action="@{note/add/{id}(id=${patientBean.id})}" name="note" method="post">
-    <label for="note"></label>
-    <textarea id="note" name="note" rows="5" cols="50" required ></textarea>
+    <form th:action="@{note/add/{id}(id=${patientBean.id})}" name="note" method="post">
+        <label for="note"></label>
+        <textarea id="note" name="note" rows="5" cols="50" required placeholder="add note"></textarea>
+        <br>
+        <input type="submit" value="Add note">
+    </form>
+    <a class="cancel" href="patient">Retour</a>
     <br>
-    <input type="submit" value="Add note">
-</form>
+    <div id="tab">
+        <table>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Note</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="note :${notes}">
+                <td th:text="${note.date}"/>
+                <td>
+                    <label for="notes"></label>
+                    <pre th:text="${note.note}" id="notes"></pre>
+                </td>
+                <td>
+                    <a th:href="@{note/update/{id}(id=${note.id})}">Edit</a> |
+                    <a th:href="@{note/delete/{id}(id=${note.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<a class="cancel" href="patient">Retour</a>
-
-<div id="tab">
-    <table>
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Note</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="note :${notes}">
-            <td th:text="${note.date}"/>
-            <td>
-                <label for="notes"></label>
-                <pre th:text="${note.note}" id="notes"></pre>
-            </td>
-            <td>
-                <a th:href="@{note/update/{id}(id=${note.id})}">Edit</a> |
-                <a th:href="@{note/delete/{id}(id=${note.id})}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<a class="cancel" href="patient">Retour</a>
-
-
+    <a class="cancel" href="patient">Retour</a>
+</section>
 </body>
 </html>

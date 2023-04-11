@@ -47,8 +47,18 @@ Check that you have :
     ```sh
     docker-compose up -d 
     ```
-4. To access the WebApp, open your browser, go to [http://localhost:8888/mediscreen/ui](http://localhost:8888/mediscreen/ui)
+4. To access the WebApp, go to [http://localhost:8888/mediscreen/ui](http://localhost:8888/mediscreen/ui)
 5. To access the API, call [http://localhost:8888/mediscreen/api](http://localhost:8888/mediscreen/api).
-6. Swagger http://localhost:8888/mediscreen/api/note/index.html
-7. http://localhost:8888/mediscreen/api/note/index.html
+6. Swagger :
+   1. API note : http://localhost:8888/mediscreen/api/note/index.html
+   2. API patient : http://localhost:8888/mediscreen/api/patient/index.html
+   3. API score : http://localhost:8888/mediscreen/api/score/index.html
 7. You can use Zipkin to follow request : [ http://localhost:9411/zipkin]( http://localhost:9411/zipkin)
+
+8. Jacoco Report
+   1. Microservice-note
+      ![Jacoco Report](/img/jacoco_microservice-note.png)
+   2. Microservice-patient
+      ![Jacoco Report](/img/jacoco_microservice-patient.png)
+   3. Microservice-score
+      ![Jacoco Report](/img/jacoco_microservice-score.png)

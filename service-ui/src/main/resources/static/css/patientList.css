@@ -1,0 +1,47 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+}
+
+#patientTab {
+    width: 75vh;
+    border: solid black;
+    margin-bottom: 30px;
+}
+
+#patientTab table {
+    border-collapse: collapse;
+    display: table;
+    width: 75vh;
+}
+
+#patientTab tbody {
+    text-align: center;
+}
+
+#patientTab thead {
+    display: table-row-group;
+    height: 10vh;
+    text-align: center;
+}
+
+#patientTab th {
+    background-color: #398196;
+    border: solid #398196;
+    color: white;
+    padding: 20px 0 20px 0;
+}
+
+#patientTab tr:nth-child(odd) {
+    background-color: #f3f3f3;
+    padding: 20px 0 20px 0;
+    height: 10vh;
+}
+
+#patientTab tr:nth-child(even) {
+    background-color: white;
+    padding: 20px 0 20px 0;
+    height: 10vh;
+}

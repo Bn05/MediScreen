@@ -1,7 +1,6 @@
 #logo {
     display: flex;
     justify-content: space-around;
-
     vertical-align: center;
     width: 20%;
     height: 10%;
@@ -10,7 +9,6 @@
 }
 
 #logo h1{
-    height: 5em;
     margin-left: 0.75em;
     }
 

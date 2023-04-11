@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>MediScreen Build Page</title>
     <base href="http://localhost:8888/mediscreen/ui/">
+    <link  th:href="@{css/logo.css}" href="css/logo.css" rel="stylesheet"/>
+    <link  th:href="@{css/menu.css}" href="css/menu.css" rel="stylesheet"/>
+    <link  th:href="@{css/home.css}" href="css/home.css" rel="stylesheet"/>
+    <link  th:href="@{css/buildMessage.css}" href="css/buildMessage.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
     <div id="logo">
-        <img th:src="@{img/logo_mediscreen.png}">
+        <img id="logo_mediscreen" th:src="@{img/logo_mediscreen.png}"  alt="logo_mediscreen">
         <h1> MediScreen</h1>
     </div>
     <div id="menu">
@@ -22,7 +27,7 @@
     </div>
 </header>
 <section>
-    <H1>Cette page est en construction</H1>
+    <H1 id="build-message">Cette page est en construction</H1>
 
 </section>
 </body>

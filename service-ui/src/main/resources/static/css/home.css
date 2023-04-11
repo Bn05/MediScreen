@@ -1,18 +1,24 @@
 #home{
     display: flex;
     justify-content: space-around;
-
     margin-top: 30px;
 }
 
+#presentation{
+    font-size: 1.5em;
+}
 #home h3{
     color: #398196;
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: bold;
 }
 
 #home h4{
     color: #398196;
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: bold;
+}
+
+#imageHome img{
+    height: 90%
 }
